@@ -20,12 +20,6 @@
     <div class="page-title">
       お見積り情報入力
     </div>
-    <ul th:if="${#fields.hasErrors('all')}">
-      <li th:each="err : ${#fields.errors('all')}" th:text="${err}"></li>
-    </ul>
-    <ul th:if="${#fields.hasErrors('all')}">
-      <li th:each="err : ${#fields.errors('all')}" th:text="${err}"></li>
-    </ul>
     <div class="col-sm-12">
       <fieldset>
         <div class="sub-title">お客様情報</div>
@@ -40,29 +34,29 @@
           <input type="tel" id="tel" name="tel" th:field="*{tel}" class="form-control" value="03-1234-5678"/>
         </div>
         <div class="form-group">
-          <label for="email">連絡先メールアドレス</label>
+          <label for="email">連絡先メールアドレス</label> <span class="error-message" th:each="err : ${#fields.errors('email')}" th:text="${err}"></span>
           <input type="text" id="email" name="email" th:field="*{email}" class="form-control" value="test@test.com"/>
         </div>
-        <div class="sub-title">集荷元・お届け先</div>
+        <div class="sub-title">集荷元・お届け先</div> 
         <div class="form-group">
-          <label for="oldPrefectureId">集荷元住所（都道府県）</label>
+          <label for="oldPrefectureId">集荷元住所（都道府県）</label> <span class="error-message" th:each="err : ${#fields.errors('oldPrefectureId')}" th:text="${err}"></span>
           <select id="oldPrefectureId" name="oldPrefectureId" class="form-control">
             <option th:each="prefecture : ${prefectures}" th:value="${prefecture.prefectureId}" th:field="*{oldPrefectureId}">[[${prefecture.prefectureName}]]</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="oldAddress">集荷元住所（市区町村以下）</label>
+          <label for="oldAddress">集荷元住所（市区町村以下）</label> <span class="error-message" th:each="err : ${#fields.errors('oldAddress')}" th:text="${err}"></span>
           <input type="text" id="oldAddress" name="oldAddress" th:field="*{oldAddress}"
                  class="form-control" value="新宿区西新宿1-1-1"/>
         </div>
         <div class="form-group">
-          <label for="newPrefectureId">お届け先住所（都道府県）</label>
+          <label for="newPrefectureId">お届け先住所（都道府県）</label> <span class="error-message" th:each="err : ${#fields.errors('newPrefectureId')}" th:text="${err}"></span>
           <select id="newPrefectureId" name="newPrefectureId" class="form-control">
             <option th:each="prefecture : ${prefectures}" th:value="${prefecture.prefectureId}" th:field="*{newPrefectureId}">[[${prefecture.prefectureName}]]</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="newAddress">お届け先住所（市区町村以下）</label>
+          <label for="newAddress">お届け先住所（市区町村以下）</label> <span class="error-message" th:each="err : ${#fields.errors('newAddress')}" th:text="${err}"></span>
           <input type="text" id="newAddress" name="newAddress" th:field="*{newAddress}" class="form-control"
                  value="札幌市南区1"/>
         </div>
@@ -70,56 +64,56 @@
       <fieldset>
       <div class="sub-title">お荷物情報</div>
         <div class="form-group">
-          <label for="box">段ボールの個数　※サイズ：620mm×250mm×480mm（洋服30着程度）</label>
+          <label for="box">段ボールの個数　※サイズ：620mm×250mm×480mm（洋服30着程度）</label> <span class="error-message" th:each="err : ${#fields.errors('box')}" th:text="${err}"></span>
           <select id="box" name="box" th:field="*{box}" class="form-control"/>
             <option th:each="num : ${#numbers.sequence(0, 100)}" th:value="${num}" th:text="${num}" th:selected="${num.toString().equals(userOrderForm.box)}"></option>
           </select>
         </div>
         <div class="form-group">
-          <label for="bed">ベッドの個数</label>
+          <label for="bed">ベッドの個数</label> <span class="error-message" th:each="err : ${#fields.errors('bed')}" th:text="${err}"></span>
           <select id="bed" name="bed" th:field="*{bed}" class="form-control"/>
             <option th:each="num : ${#numbers.sequence(0, 10)}" th:value="${num}" th:text="${num}" th:selected="${num.toString().equals(userOrderForm.bed)}"></option>
           </select>
         </div>
         <div class="form-group">
-          <label for="bicycle">自転車の個数</label>
+          <label for="bicycle">自転車の個数</label> <span class="error-message" th:each="err : ${#fields.errors('bicycle')}" th:text="${err}"></span>
           <select id="bicycle" name="bicycle" th:field="*{bicycle}" class="form-control"/>
             <option th:each="num : ${#numbers.sequence(0, 10)}" th:value="${num}" th:text="${num}" th:selected="${num.toString().equals(userOrderForm.bicycle)}"></option>
           </select>
         </div>
         <div class="form-group">
-          <label for="refrigerator">冷蔵庫の個数</label>
+          <label for="refrigerator">冷蔵庫の個数</label> <span class="error-message" th:each="err : ${#fields.errors('refrigerator')}" th:text="${err}"></span>
           <select id="refrigerator" name="refrigerator" th:field="*{refrigerator}" class="form-control"/>
             <option th:each="num : ${#numbers.sequence(0, 10)}" th:value="${num}" th:text="${num}" th:selected="${num.toString().equals(userOrderForm.refrigerator)}"></option>
           </select>
         </div>
         <div class="form-group">
-          <label for="bookshelf">本棚の個数</label>
+          <label for="bookshelf">本棚の個数</label> <span class="error-message" th:each="err : ${#fields.errors('bookshelf')}" th:text="${err}"></span>
           <select id="bookshelf" name="bookshelf" th:field="*{bookshelf}" class="form-control"/>
             <option th:each="num : ${#numbers.sequence(0, 10)}" th:value="${num}" th:text="${num}" th:selected="${num.toString().equals(userOrderForm.bookshelf)}"></option>
           </select>
         </div>
         <div class="form-group">
-          <label for="tv">テレビの個数</label>
+          <label for="tv">テレビの個数</label> <span class="error-message" th:each="err : ${#fields.errors('tv')}" th:text="${err}"></span>
           <select id="tv" name="tv" th:field="*{tv}" class="form-control"/>
             <option th:each="num : ${#numbers.sequence(0, 10)}" th:value="${num}" th:text="${num}" th:selected="${num.toString().equals(userOrderForm.tv)}"></option>
           </select>
         </div>
         <div class="form-group">
-          <label for="table">ダイニングテーブルの個数</label>
+          <label for="table">ダイニングテーブルの個数</label> <span class="error-message" th:each="err : ${#fields.errors('table')}" th:text="${err}"></span>
           <select id="table" name="table" th:field="*{table}" class="form-control"/>
             <option th:each="num : ${#numbers.sequence(0, 10)}" th:value="${num}" th:text="${num}" th:selected="${num.toString().equals(userOrderForm.table)}"></option>
           </select>
         </div>
         <div class="form-group">
-          <label for="washingMachine">洗濯機の個数</label>
+          <label for="washingMachine">洗濯機の個数</label> <span class="error-message" th:each="err : ${#fields.errors('washingMachine')}" th:text="${err}"></span>
           <select id="washingMachine" name="washingMachine" th:field="*{washingMachine}" class="form-control"
                  value="1"/>
                  <option th:each="num : ${#numbers.sequence(0, 10)}" th:value="${num}" th:text="${num}" th:selected="${num.toString().equals(userOrderForm.washingMachine)}"></option>
           </select>
         </div>
         <div class="form-group">
-          <label for="washingMachineInstallation">※洗濯機の設置工事申し込み</label>
+          <label for="washingMachineInstallation">※洗濯機の設置工事申し込み</label> <span class="error-message" th:each="err : ${#fields.errors('washingMachineInstallation')}" th:text="${err}"></span>
           <select id="washingMachineInstallation" name="washingMachineInstallation" class="form-control" th:field="*{washingMachineInstallation}">
             <option th:value="false" th:text="なし">なし</option>
             <option th:value="true" th:text="あり">あり</option>
