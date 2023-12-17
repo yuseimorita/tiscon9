@@ -26,6 +26,14 @@ public class UserOrderDto {
 
     private boolean washingMachineInstallation;
 
+    private String refrigerator;
+
+    private String bookshelf;
+
+    private String tv;
+    
+    private String table;
+
     public String getCustomerName() {
         return customerName;
     }
@@ -120,5 +128,37 @@ public class UserOrderDto {
 
     public void setWashingMachineInstallation(Boolean washingMachineInstallation) {
         this.washingMachineInstallation = washingMachineInstallation;
+    }
+
+    public int getRefrigerator() {
+        return Integer.parseInt(refrigerator);
+    }
+    
+    public void setRefrigerator(String refrigerator) {
+        this.refrigerator = refrigerator;
+    }
+    
+    public int getBookshelf() {
+        return Integer.parseInt(bookshelf);
+    }
+    
+    public void setBookshelf(String bookshelf) {
+        this.bookshelf = bookshelf;
+    }
+    
+    public int getTv() {
+        return Integer.parseInt(tv);
+    }
+    
+    public void setTv(String tv) {
+        this.tv = tv;
+    }
+    
+    public int getTable() {
+        return Integer.parseInt(table);
+    }
+    
+    public void setTable(String table) {
+        this.table = table;
     }
 }
