@@ -15,6 +15,8 @@ public class UserOrderDto {
     private String newPrefectureId;
 
     private String newAddress;
+    
+    private String month;
 
     private String box;
 
@@ -88,6 +90,14 @@ public class UserOrderDto {
 
     public void setNewAddress(String newAddress) {
         this.newAddress = newAddress;
+    }
+
+    public int getMonth() {
+        return Integer.parseInt(month);
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
     }
 
     public int getBox() {

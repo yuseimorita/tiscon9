@@ -61,6 +61,17 @@
                  value="札幌市南区1"/>
         </div>
       </fieldset>
+
+      <fieldset>
+        <div class="sub-title">引越し予定月</div>
+          <div class="form-group">
+            <label for="month">　</label>
+            <select id="month" name="month" th:field="*{month}" class="form-control"/>
+              <option th:each="num : ${#numbers.sequence(1, 12)}" th:value="${num}" th:text="${num}" th:selected="${num.toString().equals(userOrderForm.month)}"></option>
+            </select>
+          </div>
+        </fieldset>
+
       <fieldset>
       <div class="sub-title">お荷物情報</div>
         <div class="form-group">
