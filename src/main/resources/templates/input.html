@@ -66,23 +66,55 @@
       <div class="sub-title">お荷物情報</div>
         <div class="form-group">
           <label for="box">段ボールの個数　※サイズ：620mm×250mm×480mm（洋服30着程度）</label>
-          <input type="text" id="box" name="box" th:field="*{box}" class="form-control" value="10"/>
+          <select id="box" name="box" th:field="*{box}" class="form-control"/>
+            <option th:each="num : ${#numbers.sequence(0, 100)}" th:value="${num}" th:text="${num}" th:selected="${num.toString().equals(userOrderForm.box)}"></option>
+          </select>
         </div>
         <div class="form-group">
           <label for="bed">ベッドの個数</label>
-          <input type="text" id="bed" name="bed" th:field="*{bed}" class="form-control" value="3"/>
+          <select id="bed" name="bed" th:field="*{bed}" class="form-control"/>
+            <option th:each="num : ${#numbers.sequence(0, 10)}" th:value="${num}" th:text="${num}" th:selected="${num.toString().equals(userOrderForm.bed)}"></option>
+          </select>
         </div>
         <div class="form-group">
           <label for="bicycle">自転車の個数</label>
-          <input type="text" id="bicycle" name="bicycle" th:field="*{bicycle}" class="form-control" value="1"/>
+          <select id="bicycle" name="bicycle" th:field="*{bicycle}" class="form-control"/>
+            <option th:each="num : ${#numbers.sequence(0, 10)}" th:value="${num}" th:text="${num}" th:selected="${num.toString().equals(userOrderForm.bicycle)}"></option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="refrigerator">冷蔵庫の個数</label>
+          <select id="refrigerator" name="refrigerator" th:field="*{refrigerator}" class="form-control"/>
+            <option th:each="num : ${#numbers.sequence(0, 10)}" th:value="${num}" th:text="${num}" th:selected="${num.toString().equals(userOrderForm.refrigerator)}"></option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="bookshelf">本棚の個数</label>
+          <select id="bookshelf" name="bookshelf" th:field="*{bookshelf}" class="form-control"/>
+            <option th:each="num : ${#numbers.sequence(0, 10)}" th:value="${num}" th:text="${num}" th:selected="${num.toString().equals(userOrderForm.bookshelf)}"></option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="tv">テレビの個数</label>
+          <select id="tv" name="tv" th:field="*{tv}" class="form-control"/>
+            <option th:each="num : ${#numbers.sequence(0, 10)}" th:value="${num}" th:text="${num}" th:selected="${num.toString().equals(userOrderForm.tv)}"></option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="table">ダイニングテーブルの個数</label>
+          <select id="table" name="table" th:field="*{table}" class="form-control"/>
+            <option th:each="num : ${#numbers.sequence(0, 10)}" th:value="${num}" th:text="${num}" th:selected="${num.toString().equals(userOrderForm.table)}"></option>
+          </select>
         </div>
         <div class="form-group">
           <label for="washingMachine">洗濯機の個数</label>
-          <input type="text" id="washingMachine" name="washingMachine" th:field="*{washingMachine}" class="form-control"
+          <select id="washingMachine" name="washingMachine" th:field="*{washingMachine}" class="form-control"
                  value="1"/>
+                 <option th:each="num : ${#numbers.sequence(0, 10)}" th:value="${num}" th:text="${num}" th:selected="${num.toString().equals(userOrderForm.washingMachine)}"></option>
+          </select>
         </div>
         <div class="form-group">
-          <label for="washingMachineInstallation">洗濯機の設置工事申し込み</label>
+          <label for="washingMachineInstallation">※洗濯機の設置工事申し込み</label>
           <select id="washingMachineInstallation" name="washingMachineInstallation" class="form-control" th:field="*{washingMachineInstallation}">
             <option th:value="false" th:text="なし">なし</option>
             <option th:value="true" th:text="あり">あり</option>

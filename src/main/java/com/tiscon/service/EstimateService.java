@@ -80,7 +80,11 @@ public class EstimateService {
         int boxes = getBoxForPackage(dto.getBox(), PackageType.BOX)
                 + getBoxForPackage(dto.getBed(), PackageType.BED)
                 + getBoxForPackage(dto.getBicycle(), PackageType.BICYCLE)
-                + getBoxForPackage(dto.getWashingMachine(), PackageType.WASHING_MACHINE);
+                + getBoxForPackage(dto.getWashingMachine(), PackageType.WASHING_MACHINE)
+                + getBoxForPackage(dto.getRefrigerator(), PackageType.REFRIGERATOR)
+                + getBoxForPackage(dto.getBookshelf(), PackageType.BOOKSHELF)
+                + getBoxForPackage(dto.getTv(), PackageType.TV)
+                + getBoxForPackage(dto.getTable(), PackageType.TABLE);
 
         // 箱に応じてトラックの種類が変わり、それに応じて料金が変わるためトラック料金を算出する。
         int pricePerTruck = estimateDAO.getPricePerTruck(boxes);
