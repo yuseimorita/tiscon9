@@ -1,6 +1,7 @@
 package com.tiscon.controller;
 
 import com.tiscon.dao.EstimateDao;
+import com.tiscon.dto.PriceDto;
 import com.tiscon.dto.UserOrderDto;
 import com.tiscon.form.UserOrderForm;
 import com.tiscon.service.EstimateService;
@@ -130,11 +131,15 @@ public class EstimateController {
         // 料金の計算を行う。
         UserOrderDto dto = new UserOrderDto();
         BeanUtils.copyProperties(userOrderForm, dto);
-        Integer price = estimateService.getPrice(dto);
+        PriceDto pricedto = estimateService.getPrice(dto);
 
         model.addAttribute("prefectures", estimateDAO.getAllPrefectures());
         model.addAttribute("userOrderForm", userOrderForm);
-        model.addAttribute("price", price);
+        model.addAttribute("total", pricedto.getTotal());
+        model.addAttribute("priceForDistance", pricedto.getPriceForDistance());
+        model.addAttribute("pricePerTruck", pricedto.getPricePerTruck());
+        model.addAttribute("multiplier", pricedto.getMultiplier());
+        model.addAttribute("priceForOptionalService", pricedto.getPriceForOptionalService());
         return "result";
     }
 

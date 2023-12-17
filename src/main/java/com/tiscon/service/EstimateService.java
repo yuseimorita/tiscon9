@@ -6,6 +6,7 @@ import com.tiscon.dao.EstimateDao;
 import com.tiscon.domain.Customer;
 import com.tiscon.domain.CustomerOptionService;
 import com.tiscon.domain.CustomerPackage;
+import com.tiscon.dto.PriceDto;
 import com.tiscon.dto.UserOrderDto;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -69,7 +70,7 @@ public class EstimateService {
      * @param dto 見積もり依頼情報
      * @return 概算見積もり結果の料金
      */
-    public Integer getPrice(UserOrderDto dto) {
+    public PriceDto getPrice(UserOrderDto dto) {
         double distance = estimateDAO.getDistance(dto.getOldPrefectureId(), dto.getNewPrefectureId());
         // 小数点以下を切り捨てる
         int distanceInt = (int) Math.floor(distance);
@@ -103,8 +104,14 @@ public class EstimateService {
                 multiplier = 1.2;
             }
         }
+        PriceDto pricedto = new PriceDto();
+        pricedto.setPriceForDistance(priceForDistance);
+        pricedto.setPricePerTruck(pricePerTruck);
+        pricedto.setMultiplier(multiplier);
+        pricedto.setPriceForOptionalService(priceForOptionalService);
+        pricedto.setTotal((int) ((priceForDistance + pricePerTruck) * multiplier) + priceForOptionalService);
 
-        return (int) ((priceForDistance + pricePerTruck) * multiplier) + priceForOptionalService;
+        return pricedto;
 
     }
 
