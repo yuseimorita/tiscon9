@@ -8,6 +8,14 @@
   <link rel="stylesheet" th:href="@{http://fonts.googleapis.com/css?family=Exo:900}"
         href="http://fonts.googleapis.com/css?family=Exo:900"/>
   <link rel="stylesheet" th:href="@{/css/main.css}" href="../static/css/main.css">
+  <style>
+    .required {
+      color: red;
+      font-size: smaller;
+    }
+
+    </style>
+
 </head>
 
 <body>
@@ -24,17 +32,18 @@
       <fieldset>
         <div class="sub-title">お客様情報</div>
         <div class="form-group">
-          <label for="customerName">氏名</label> <span class="error-message" th:each="err : ${#fields.errors('customerName')}" th:text="${err}"></span>
+          <label for="customerName">氏名<span class="required">　※必須　　</span>
+          </label> <span class="error-message" th:each="err : ${#fields.errors('customerName')}" th:text="${err}"></span>
 
           <input type="text" id="customerName" name="customerName" th:field="*{customerName}" class="form-control" value="山田太郎"/>
         </div>
         <div class="form-group">
-          <label for="tel">連絡先TEL ※ハイフンなし</label> <span class="error-message" th:each="err : ${#fields.errors('tel')}" th:text="${err}"></span>
+          <label for="tel">連絡先TEL ※ハイフンなし<span class="required">　※必須　　</span></label> <span class="error-message" th:each="err : ${#fields.errors('tel')}" th:text="${err}"></span>
 
           <input type="tel" id="tel" name="tel" th:field="*{tel}" class="form-control" value="03-1234-5678"/>
         </div>
         <div class="form-group">
-          <label for="email">連絡先メールアドレス</label> <span class="error-message" th:each="err : ${#fields.errors('email')}" th:text="${err}"></span>
+          <label for="email">連絡先メールアドレス<span class="required">　※必須　　</span></label> <span class="error-message" th:each="err : ${#fields.errors('email')}" th:text="${err}"></span>
           <input type="text" id="email" name="email" th:field="*{email}" class="form-control" value="test@test.com"/>
         </div>
         <div class="sub-title">集荷元・お届け先</div> 
@@ -45,7 +54,7 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="oldAddress">集荷元住所（市区町村以下）</label> <span class="error-message" th:each="err : ${#fields.errors('oldAddress')}" th:text="${err}"></span>
+          <label for="oldAddress">集荷元住所（市区町村以下）<span class="required">　※必須　　</span></label> <span class="error-message" th:each="err : ${#fields.errors('oldAddress')}" th:text="${err}"></span>
           <input type="text" id="oldAddress" name="oldAddress" th:field="*{oldAddress}"
                  class="form-control" value="新宿区西新宿1-1-1"/>
         </div>
@@ -56,7 +65,7 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="newAddress">お届け先住所（市区町村以下）</label> <span class="error-message" th:each="err : ${#fields.errors('newAddress')}" th:text="${err}"></span>
+          <label for="newAddress">お届け先住所（市区町村以下）<span class="required">　※必須　　</span></label> <span class="error-message" th:each="err : ${#fields.errors('newAddress')}" th:text="${err}"></span>
           <input type="text" id="newAddress" name="newAddress" th:field="*{newAddress}" class="form-control"
                  value="札幌市南区1"/>
         </div>
